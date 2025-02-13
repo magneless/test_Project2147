@@ -36,6 +36,9 @@ touch storage.db
 
 5. Запустите:
 ```bash
+mkdir build
+cd build
+cmake ..
 make run
 ```
 
