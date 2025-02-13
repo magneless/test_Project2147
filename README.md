@@ -29,12 +29,7 @@ cd test_Project2147
 
 [Ссылка на github](https://github.com/CrowCpp/Crow?ysclid=m73pfnkuje653932681)
 
-4. Создайте хранилище:
-```bash
-touch storage.db
-```
-
-5. Запустите:
+4. Запустите:
 ```bash
 mkdir build
 cd build
