@@ -1,22 +1,20 @@
 CXX := g++
+CXXFLAGS := -Wall -Wextra -Werror -std=c++17 -O2
+LDFLAGS := -lpthread -lsqlite3
 
-FLAGS := -lpthread -lsqlite3
+all: main
 
-all: build
+main: main.o validation.o placesDB.o
+	$(CXX) $^ -o $@ $(LDFLAGS)
 
-build: main
+%.o: %.cpp
+	$(CXX) -c $< -o $@
 
-main: main.o validation.o
-	$(CXX) main.o validation.o -o main $(FLAGS)
-
-main.o: main.cpp
-	$(CXX) main.cpp -c
-
-validation.o: validation.cpp
-	$(CXX) validation.cpp -c
-
-run: build
+run: main
 	./main
+
+format:
+	clang-format -i *.cpp *.h
 
 clean:
 	rm -rf *.o main

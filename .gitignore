@@ -1,3 +1,5 @@
 *.db
 .vscode
 Crow
+*.o
+main
