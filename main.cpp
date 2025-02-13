@@ -1,14 +1,22 @@
 #include <sqlite3.h>
 
-#include <cstring>
 #include <memory>
 
 #include "crow.h"
 #include "placesApp.h"
+#include "placesDB.h"
 
 int main() {
 	const std::string dbPath = "storage.db";
-	PlacesApp placesApp(dbPath);
+	std::shared_ptr<PlacesDB> db;
+	try {
+		db = std::make_shared<PlacesDB>(dbPath);
+		db->create();
+	} catch (const std::exception& e) {
+		CROW_LOG_ERROR << "Error: " << e.what();
+		return 1;
+	}
+	PlacesApp placesApp(db);
 
 	crow::SimpleApp app;
 	CROW_ROUTE(app, "/places")

@@ -2,15 +2,7 @@
 
 #include "validation.h"
 
-PlacesApp::PlacesApp(const std::string& dbPath) {
-	try {
-		db = std::make_unique<PlacesDB>(dbPath);
-		db->create();
-	} catch (const std::exception& e) {
-		CROW_LOG_ERROR << "Error: " << e.what();
-		throw;
-	}
-}
+PlacesApp::PlacesApp(std::shared_ptr<PlacesDB> db) : db(db) {}
 
 crow::response PlacesApp::addPlace(const crow::request& req) {
 	auto reqJson = crow::json::load(req.body);

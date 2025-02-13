@@ -7,10 +7,10 @@
 
 class PlacesApp {
    public:
-	PlacesApp(const std::string& dbPath);
+	PlacesApp(std::shared_ptr<PlacesDB> db);
 	crow::response addPlace(const crow::request& req);
 	crow::response getPlaces(const crow::request& req);
 
    private:
-	std::unique_ptr<PlacesDB> db;
+	std::shared_ptr<PlacesDB> db;
 };
