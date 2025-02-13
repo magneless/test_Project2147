@@ -14,6 +14,6 @@ bool validate(const crow::json::rvalue& reqJson) {
 	if (coordinates[0].t() != crow::json::type::Number ||
 		coordinates[1].t() != crow::json::type::Number)
 		return false;
-	
+
 	return true;
 }
