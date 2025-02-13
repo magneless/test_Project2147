@@ -1,5 +1,4 @@
-#ifndef PLACESDB_H
-#define PLACESDB_H
+#pragma once
 
 #include <sqlite3.h>
 
@@ -25,5 +24,3 @@ class PlacesDB {
    private:
 	sqlite3* db;
 };
-
-#endif

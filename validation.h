@@ -1,8 +1,5 @@
-#ifndef VALIDATION_H
-#define VALIDATION_H
+#pragma once
 
 #include "crow.h"
 
 bool validate(const crow::json::rvalue& reqJson);
-
-#endif
